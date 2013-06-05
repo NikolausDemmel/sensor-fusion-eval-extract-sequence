@@ -1,0 +1,4 @@
+../check_seq_single.sh 2
+../../shift_xml_files.sh -2
+rm image_-000*
+../check_seq.sh 0
