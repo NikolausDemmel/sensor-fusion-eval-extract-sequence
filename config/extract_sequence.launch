@@ -1,0 +1,26 @@
+<launch>
+
+  <arg name="bag" />
+  <arg name="rate" default="1.0"/>
+  <arg name="camera_link" default="/ps/camera_uvm_optical_frame" />
+  <arg name="record_ground_truth" default="true" />
+  <arg name="gt_offset" default="0.0" />
+  <arg name="output" default="$(arg bag).seq" />
+
+  <include file="$(find uvm_handheld_evaluation)/launch/rosbag_play.launch">
+    <arg name="bag" value="$(arg bag)" />
+    <arg name="rate" value="$(arg rate)" />
+  </include>
+
+  <include file="../config/handheld_with_phasespace.launch" />
+
+  <include file="$(find uvm_sequence_recorder)/launch/extract_sequence/sequence_recorder.launch">
+	<arg name="folder" value="$(env PWD)"/>
+	<arg name="sequence_name" value="$(arg output)"/>
+	<arg name="use_robot_pose" value="false" />
+	<arg name="camera_link" value="$(arg camera_link)" />
+	<arg name="record_ground_truth" value="$(arg record_ground_truth)" />
+	<arg name="gt_offset" value="$(arg gt_offset)" />
+  </include>
+
+</launch>
