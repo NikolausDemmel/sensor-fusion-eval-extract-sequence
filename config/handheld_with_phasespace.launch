@@ -11,12 +11,12 @@
   <param name="robot_description_ps" command="$(arg handheld_ps_urdf_file)" />
 
   <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" output="screen">
-    <param name="publish_frequency" type="double" value="5.0" />
+    <param name="publish_frequency" type="double" value="100.0" />
     <!--param name="tf_prefix" type="string" value="" /-->
   </node>
 
   <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher_phase_space" output="screen">
-    <param name="publish_frequency" type="double" value="5.0" />
+    <param name="publish_frequency" type="double" value="100.0" />
     <param name="tf_prefix" type="string" value="ps" />
     <remap from="robot_description" to="robot_description_ps" />
   </node>
